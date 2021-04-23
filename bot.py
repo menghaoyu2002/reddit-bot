@@ -6,14 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 RANDOMPOST = RandomPost()
-SUBREDDITS = ["memes", 
-              "makemesuffer", 
-              "cringe", 
-              "tiktok", 
-              "mademesmile", 
-              "wholesome", 
-              "anime",
-              "pain"]
+
 
 bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
@@ -34,7 +27,15 @@ async def get(ctx, subreddit="get"):
 
 @bot.command(name="help")
 async def help(ctx):
-    response = "Try the following commands: \n !get \n !get " + "\n !get ".join(SUBREDDITS)
+    subreddits = ["memes", 
+                  "makemesuffer", 
+                  "cringe", 
+                  "tiktok", 
+                  "mademesmile", 
+                  "wholesome", 
+                  "anime",
+                  "pain"]
+    response = "Try the following commands: \n !get \n !get " + "\n !get ".join(subreddits)
     await ctx.send(response) 
 
 

@@ -38,7 +38,7 @@ class RandomPost:
         if type(subreddit) == list:
             subreddit = random.choice(subreddit)
 
-        post_number = random.randint(0, 50)
+        post_number = random.randint(0, 100)
         i = 0
         for post in subreddit.top("week"):
             if i == post_number:
