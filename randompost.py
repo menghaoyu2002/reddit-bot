@@ -29,22 +29,20 @@ class RandomPost:
             "anime": [reddit.subreddit("anime_irl"), reddit.subreddit("Animemes")],
             "pain":[reddit.subreddit("MakeMeSuffer"), 
                     reddit.subreddit("Cringetopia"), 
-                    reddit.subreddit("TikTokCringe")]
+                    reddit.subreddit("TikTokCringe")],
+            "get": reddit.subreddit("popular")
         }
 
-    def get_post(self, subreddit_name: str) -> None:
-        if subreddit_name == "get":
-            subreddit = random.choice(list(self.subreddits.values()))
-        else:
-            subreddit = self.subreddits[subreddit_name]
-            if type(subreddit) == list:
-                subreddit = random.choice(subreddit)
+    def get_post(self, subreddit_name: str):
+        subreddit = self.subreddits[subreddit_name]
+        if type(subreddit) == list:
+            subreddit = random.choice(subreddit)
 
         post_number = random.randint(0, 50)
         i = 0
         for post in subreddit.top("week"):
             if i == post_number:
-                return post.url
+                return post.url, post.title
             i += 1
 
 

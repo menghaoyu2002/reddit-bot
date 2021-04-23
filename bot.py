@@ -26,9 +26,10 @@ async def on_ready():
 
 @bot.command(name="get")
 async def get(ctx, subreddit="get"):
-    response = RANDOMPOST.get_post(subreddit)
+    link, title = RANDOMPOST.get_post(subreddit)
     print(f"preparing to send post from r/{subreddit}")
-    await ctx.send(response)  
+    await ctx.send(title)
+    await ctx.send(link)  
 
 
 @bot.command(name="help")
